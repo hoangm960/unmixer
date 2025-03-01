@@ -4,24 +4,28 @@ import { hsvaToHex } from "@uiw/color-convert";
 
 function ColorPicker() {
     const [hsva, setHsva] = useState({ h: 200, s: 43, v: 90, a: 1 });
+    const [isShowPicker, setIsShowPicker] = useState(false);
 
     return (
-        <div className="w-1/2 h-1/2 flex flex-col items-center justify-center gap-8">
-            <ColorFul
-                color={hsva}
-                onChange={(color) => {
-                    setHsva(color.hsva);
-                }}
-                disableAlpha={true}
-            />
+        <div className="p-2.5 w-fit h-fit flex flex-col items-center gap-5">
             <div
-                className="w-1/3 h-1/3 rounded-2xl flex justify-center items-center text-2xl"
+                className="w-full h-full p-3 rounded-2xl flex justify-center items-center text-2xl cursor-pointer"
                 style={{ backgroundColor: hsvaToHex(hsva) }}
+                onClick={() => setIsShowPicker(!isShowPicker)}
             >
                 <p style={{ color: hsva.v <= 50 ? "white" : "black" }}>
                     {hsvaToHex(hsva)}
                 </p>
             </div>
+            {isShowPicker ? (
+                <ColorFul
+                    color={hsva}
+                    onChange={(color) => {
+                        setHsva(color.hsva);
+                    }}
+                    disableAlpha={true}
+                />
+            ) : null}
         </div>
     );
 }
