@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import ColorPicker from "@components/ColorPicker";
+import ColorPickerList from "@components/ColorPickerList";
 
 function App() {
     return (
-        <div className="w-dvw h-dvh flex justify-center items-center">
-            <ColorPicker />
+        <div className="w-dvw h-dvh flex flex-col justify-center items-center gap-5">
+            <ColorPickerList label="Input Colors" />
+            <ColorPickerList label="Target" />
         </div>
     );
 }
