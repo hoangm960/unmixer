@@ -119,7 +119,7 @@ def find_best_mix(target_hex, input_colors):
         return None
 
 
-@app.route("/api/mix", methods=["GET"])
+@app.route("/api/mix", methods=["POST"])
 def mix():
     data = request.get_json()
     target_hex = data.get("target_hex")
