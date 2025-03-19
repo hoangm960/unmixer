@@ -21,7 +21,10 @@ function ColorPicker({
             <div
                 className="w-full h-full p-3 rounded-2xl flex justify-center items-center text-2xl cursor-pointer"
                 style={{ backgroundColor: hsvaToHex(hsva) }}
-                onClick={() => setIsShowPicker(!isShowPicker)}
+                onClick={() => {
+                    setIsShowPicker(!isShowPicker);
+                    onChangeColor(hsvaToHex(hsva), index);
+                }}
             >
                 <p style={{ color: hsva.v <= 50 ? "white" : "black" }}>
                     {hsvaToHex(hsva)}
@@ -32,7 +35,6 @@ function ColorPicker({
                     color={hsva}
                     onChange={(color) => {
                         setHsva(color.hsva);
-                        onChangeColor(hsvaToHex(hsva), index);
                     }}
                     disableAlpha={true}
                 />
