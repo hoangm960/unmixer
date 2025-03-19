@@ -1,9 +1,19 @@
 import { useState } from "react";
 import ColorFul from "@uiw/react-color-colorful";
-import { hsvaToHex } from "@uiw/color-convert";
+import { hexToHsva, hsvaToHex } from "@uiw/color-convert";
 
-function ColorPicker() {
-    const [hsva, setHsva] = useState({ h: 200, s: 43, v: 90, a: 1 });
+interface Props {
+    initialColor?: string;
+    index: number;
+    onChangeColor: (color: string, index: number) => void;
+}
+
+function ColorPicker({
+    initialColor = "#83c5e6",
+    index,
+    onChangeColor
+}: Props) {
+    const [hsva, setHsva] = useState(hexToHsva(initialColor));
     const [isShowPicker, setIsShowPicker] = useState(false);
 
     return (
@@ -22,6 +32,7 @@ function ColorPicker() {
                     color={hsva}
                     onChange={(color) => {
                         setHsva(color.hsva);
+                        onChangeColor(hsvaToHex(hsva), index);
                     }}
                     disableAlpha={true}
                 />
