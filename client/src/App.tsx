@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ColorPickerList from "@components/ColorPickerList";
-import { API_BASE } from "@constants/api.js";
+import { API_BASE } from "@constants/api";
 import { hexToHsva } from "@uiw/color-convert";
 
 function App() {
