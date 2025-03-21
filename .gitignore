@@ -11,6 +11,8 @@ client/node_modules
 client/dist
 client/dist-ssr
 client/*.local
+client/package-lock.json
+client/bun.lock
 
 # Editor directories and files
 client/.vscode/*
